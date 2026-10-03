@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="InsightBoard - a modern analytics platform landing page.">
+  <meta name="theme-color" content="#635bff">
+  <link rel="preload" href="style.css" as="style">
+  <title>InsightBoard | Turn Data Into Decisions</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body id="top">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header">
+    <nav class="navbar container" aria-label="Main navigation">
+      <a class="logo" href="#top" aria-label="InsightBoard home">
+        <span class="logo-mark">I</span> InsightBoard
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation menu" aria-expanded="false"
+        aria-controls="primaryMenu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav-links" id="primaryMenu">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#workflow">How it works</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a class="nav-cta" href="#contact">Get Started</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content" tabindex="-1">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <p class="eyebrow">SMARTER DATA. BETTER DECISIONS.</p>
+          <h1>Turn your data into <span>clear insights.</span></h1>
+          <p class="hero-text">
+            InsightBoard gives teams a simple way to understand performance,
+            discover trends and make confident decisions from one modern dashboard.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#features" aria-label="Explore InsightBoard features">Explore Features</a>
+            <a class="btn btn-secondary" href="#workflow" aria-label="Learn how InsightBoard works">See How It Works</a>
+          </div>
+          <div class="trust-row">
+            <div><strong>10K+</strong><span>Data points analyzed</span></div>
+            <div><strong>98%</strong><span>User satisfaction</span></div>
+            <div><strong>24/7</strong><span>Accessible insights</span></div>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-label="Analytics dashboard preview">
+          <div class="dashboard-card">
+            <div class="dashboard-top">
+              <div>
+                <span class="small-label">TOTAL REVENUE</span>
+                <h2>$84,240</h2>
+              </div>
+              <span class="positive">+18.4%</span>
+            </div>
+            <div class="chart">
+              <div class="chart-grid"></div>
+              <svg viewBox="0 0 500 190" role="img" aria-label="Revenue trend chart">
+                <polyline points="0,160 65,140 120,150 180,105 235,120 295,75 350,90 410,42 500,58" fill="none"
+                  stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+            <div class="chart-labels">
+              <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="features section" id="features">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">BUILT FOR MODERN TEAMS</p>
+          <h2>Everything you need to understand performance.</h2>
+          <p>Simple tools, meaningful insights and a responsive experience on every screen.</p>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature-card">
+            <div class="icon">▦</div>
+            <h3>Live Dashboard</h3>
+            <p>See important metrics in one organized view without jumping between tools.</p>
+          </article>
+          <article class="feature-card">
+            <div class="icon">↗</div>
+            <h3>Clear Trends</h3>
+            <p>Spot growth patterns and performance changes through easy-to-read visuals.</p>
+          </article>
+          <article class="feature-card">
+            <div class="icon">◈</div>
+            <h3>Simple Reports</h3>
+            <p>Turn complex information into focused reports that are easy to understand.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="interactive section" id="interactive">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">INTERACTIVE COMPONENTS</p>
+          <h2>Explore your data your way.</h2>
+          <p>Week 2 adds reusable tabs, an accordion and a modal interaction using vanilla JavaScript.</p>
+        </div>
+
+        <div class="tabs-card">
+          <div class="tabs" role="tablist" aria-label="Insight categories">
+            <button type="button" class="tab active" role="tab" aria-selected="true" aria-controls="tabOverview"
+              id="tabBtnOverview">Overview</button>
+            <button type="button" class="tab" role="tab" aria-selected="false" aria-controls="tabGrowth"
+              id="tabBtnGrowth">Growth</button>
+            <button type="button" class="tab" role="tab" aria-selected="false" aria-controls="tabCustomers"
+              id="tabBtnCustomers">Customers</button>
+          </div>
+          <div class="tab-panel" id="tabOverview" role="tabpanel" aria-labelledby="tabBtnOverview">
+            <h3>Performance overview</h3>
+            <p>Your key metrics are moving steadily upward. Use the Growth and Customers tabs to explore specific areas.
+            </p>
+          </div>
+          <div class="tab-panel hidden" id="tabGrowth" role="tabpanel" aria-labelledby="tabBtnGrowth">
+            <h3>Growth insights</h3>
+            <p>Revenue increased by 18.4% this period, with the strongest growth coming from returning users.</p>
+          </div>
+          <div class="tab-panel hidden" id="tabCustomers" role="tabpanel" aria-labelledby="tabBtnCustomers">
+            <h3>Customer insights</h3>
+            <p>Customer engagement remains healthy, with a 24% increase in active sessions.</p>
+          </div>
+        </div>
+
+        <div class="accordion" aria-label="Frequently asked questions">
+          <button type="button" class="accordion-trigger" aria-expanded="false" aria-controls="answer1">
+            Why use InsightBoard?
+            <span>+</span>
+          </button>
+          <div class="accordion-panel" id="answer1" hidden>
+            <p>It brings important metrics together so teams can understand performance without navigating multiple
+              tools.</p>
+          </div>
+          <button type="button" class="accordion-trigger" aria-expanded="false" aria-controls="answer2">
+            Is the dashboard responsive?
+            <span>+</span>
+          </button>
+          <div class="accordion-panel" id="answer2" hidden>
+            <p>Yes. The layout adapts across desktop, tablet and mobile screen sizes.</p>
+          </div>
+        </div>
+
+        <button class="btn btn-primary demo-modal-btn" id="openModal" type="button">Open Interactive Demo</button>
+        <p class="sr-only" id="statusMessage" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <div class="modal" id="demoModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+      <div class="modal-backdrop" id="modalBackdrop"></div>
+      <div class="modal-content">
+        <button type="button" class="modal-close" id="closeModal" aria-label="Close dialog">×</button>
+        <p class="eyebrow">INTERACTIVE DEMO</p>
+        <h2 id="modalTitle">Your dashboard is ready.</h2>
+        <p>This modal demonstrates DOM manipulation, event handling, keyboard-friendly controls and reusable UI
+          behavior.</p>
+        <button type="button" class="btn btn-primary" id="modalDone">Got it</button>
+      </div>
+    </div>
+
+    <section class="performance section" id="performance">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">PERFORMANCE FIRST</p>
+          <h2>Built to feel fast on every device.</h2>
+          <p>This version reduces unnecessary work, keeps JavaScript deferred, and respects users with slower
+            connections or reduced-motion preferences.</p>
+        </div>
+        <div class="perf-grid">
+          <article><strong>Deferred JS</strong><span>Script execution waits until HTML parsing is complete.</span>
+          </article>
+          <article><strong>Lightweight UI</strong><span>No external UI libraries or unnecessary dependencies.</span>
+          </article>
+          <article><strong>Efficient CSS</strong><span>Reusable classes and responsive layouts reduce
+              duplication.</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="workflow section" id="workflow">
+      <div class="container workflow-grid">
+        <div>
+          <p class="eyebrow">HOW IT WORKS</p>
+          <h2>From raw numbers to useful decisions.</h2>
+        </div>
+        <div class="steps">
+          <div class="step"><span>01</span>
+            <div>
+              <h3>Connect</h3>
+              <p>Bring your business data into one place.</p>
+            </div>
+          </div>
+          <div class="step"><span>02</span>
+            <div>
+              <h3>Understand</h3>
+              <p>Explore the metrics and trends that matter.</p>
+            </div>
+          </div>
+          <div class="step"><span>03</span>
+            <div>
+              <h3>Act</h3>
+              <p>Use clear insights to make your next move.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section" id="contact">
+      <div class="container cta">
+        <div>
+          <p class="eyebrow">READY TO START?</p>
+          <h2>Make your data easier to understand.</h2>
+        </div>
+        <a class="btn btn-light" href="mailto:hello@insightboard.example">Contact Us</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" aria-label="Site footer">
+    <div class="container footer-inner">
+      <p>© 2026 InsightBoard. Built as a frontend development project.</p>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+
+</html>

@@ -1,0 +1,339 @@
+{
+  "meta": {
+    "lastUpdated": "2026-10-02T10:30:00Z",
+    "lastUpdatedFormatted": "Oct 2, 2026, 10:30 AM",
+    "currency": "USD",
+    "periodLabel": "Fiscal Year 2026",
+    "environment": "Frontend Internship Demo"
+  },
+  "metrics": [
+    {
+      "id": "revenue",
+      "label": "Total Revenue",
+      "value": 94240,
+      "format": "currency",
+      "change": "+18.4%",
+      "growthRate": 18.4,
+      "isPositive": true,
+      "period": "vs last period",
+      "benchmark": "Target: $80,000"
+    },
+    {
+      "id": "customers",
+      "label": "Active Customers",
+      "value": 12480,
+      "format": "number",
+      "change": "+12.8%",
+      "growthRate": 12.8,
+      "isPositive": true,
+      "period": "vs last period",
+      "benchmark": "Retention: 94.2%"
+    },
+    {
+      "id": "orders",
+      "label": "Total Orders",
+      "value": 2840,
+      "format": "number",
+      "change": "+9.6%",
+      "growthRate": 9.6,
+      "isPositive": true,
+      "period": "vs last period",
+      "benchmark": "Avg: 3.1 items/order"
+    },
+    {
+      "id": "conversion",
+      "label": "Conversion Rate",
+      "value": 6.8,
+      "format": "percent",
+      "change": "+1.4%",
+      "growthRate": 1.4,
+      "isPositive": true,
+      "period": "vs last period",
+      "benchmark": "Industry avg: 4.5%"
+    }
+  ],
+  "monthlyRevenue": [
+    {
+      "month": "Jan",
+      "fullMonth": "January",
+      "revenue": 4800,
+      "target": 4500,
+      "orders": 160,
+      "growth": 5.2
+    },
+    {
+      "month": "Feb",
+      "fullMonth": "February",
+      "revenue": 5600,
+      "target": 5000,
+      "orders": 185,
+      "growth": 16.7
+    },
+    {
+      "month": "Mar",
+      "fullMonth": "March",
+      "revenue": 6100,
+      "target": 5500,
+      "orders": 210,
+      "growth": 8.9
+    },
+    {
+      "month": "Apr",
+      "fullMonth": "April",
+      "revenue": 7200,
+      "target": 6500,
+      "orders": 245,
+      "growth": 18.0
+    },
+    {
+      "month": "May",
+      "fullMonth": "May",
+      "revenue": 6900,
+      "target": 6800,
+      "orders": 230,
+      "growth": -4.2
+    },
+    {
+      "month": "Jun",
+      "fullMonth": "June",
+      "revenue": 8100,
+      "target": 7200,
+      "orders": 270,
+      "growth": 17.4
+    },
+    {
+      "month": "Jul",
+      "fullMonth": "July",
+      "revenue": 7600,
+      "target": 7500,
+      "orders": 255,
+      "growth": -6.2
+    },
+    {
+      "month": "Aug",
+      "fullMonth": "August",
+      "revenue": 8500,
+      "target": 8000,
+      "orders": 290,
+      "growth": 11.8
+    },
+    {
+      "month": "Sep",
+      "fullMonth": "September",
+      "revenue": 9200,
+      "target": 8500,
+      "orders": 315,
+      "growth": 8.2
+    },
+    {
+      "month": "Oct",
+      "fullMonth": "October",
+      "revenue": 10100,
+      "target": 9000,
+      "orders": 340,
+      "growth": 9.8
+    },
+    {
+      "month": "Nov",
+      "fullMonth": "November",
+      "revenue": 9500,
+      "target": 9200,
+      "orders": 325,
+      "growth": -5.9
+    },
+    {
+      "month": "Dec",
+      "fullMonth": "December",
+      "revenue": 10640,
+      "target": 9800,
+      "orders": 365,
+      "growth": 12.0
+    }
+  ],
+  "channels": [
+    {
+      "name": "Organic Search",
+      "percent": 42,
+      "visitors": 18450,
+      "conversion": "7.4%"
+    },
+    {
+      "name": "Direct Traffic",
+      "percent": 28,
+      "visitors": 12300,
+      "conversion": "8.1%"
+    },
+    {
+      "name": "Social Media",
+      "percent": 18,
+      "visitors": 7900,
+      "conversion": "4.9%"
+    },
+    {
+      "name": "Referral",
+      "percent": 12,
+      "visitors": 5260,
+      "conversion": "6.3%"
+    }
+  ],
+  "products": [
+    {
+      "id": "PROD-ENT",
+      "name": "Enterprise Plan",
+      "category": "Enterprise",
+      "price": 999,
+      "activeSubscribers": 28,
+      "monthlyRevenue": 27972,
+      "status": "Active"
+    },
+    {
+      "id": "PROD-BIZ",
+      "name": "Business Plan",
+      "category": "Subscription",
+      "price": 499,
+      "activeSubscribers": 64,
+      "monthlyRevenue": 31936,
+      "status": "Active"
+    },
+    {
+      "id": "PROD-PRO",
+      "name": "Pro Plan",
+      "category": "Subscription",
+      "price": 249,
+      "activeSubscribers": 78,
+      "monthlyRevenue": 19422,
+      "status": "Active"
+    },
+    {
+      "id": "PROD-STR",
+      "name": "Starter Plan",
+      "category": "Subscription",
+      "price": 99,
+      "activeSubscribers": 50,
+      "monthlyRevenue": 4950,
+      "status": "Active"
+    }
+  ],
+  "transactions": [
+    {
+      "id": "TX-1001",
+      "date": "2026-10-01",
+      "customer": "Aarav Sharma",
+      "email": "aarav.sharma@example.com",
+      "product": "Pro Plan",
+      "category": "Subscription",
+      "amount": 249,
+      "status": "Completed"
+    },
+    {
+      "id": "TX-1002",
+      "date": "2026-09-30",
+      "customer": "Priya Singh",
+      "email": "priya.singh@company.org",
+      "product": "Business Plan",
+      "category": "Subscription",
+      "amount": 499,
+      "status": "Completed"
+    },
+    {
+      "id": "TX-1003",
+      "date": "2026-09-29",
+      "customer": "Rahul Kumar",
+      "email": "rahul.k@startup.io",
+      "product": "Starter Plan",
+      "category": "Subscription",
+      "amount": 99,
+      "status": "Completed"
+    },
+    {
+      "id": "TX-1004",
+      "date": "2026-09-28",
+      "customer": "Ananya Verma",
+      "email": "ananya.v@designhub.co",
+      "product": "Pro Plan",
+      "category": "Subscription",
+      "amount": 249,
+      "status": "Completed"
+    },
+    {
+      "id": "TX-1005",
+      "date": "2026-09-27",
+      "customer": "Rohan Gupta",
+      "email": "rohan.g@enterprises.com",
+      "product": "Business Plan",
+      "category": "Subscription",
+      "amount": 499,
+      "status": "Pending"
+    },
+    {
+      "id": "TX-1006",
+      "date": "2026-09-26",
+      "customer": "Neha Patel",
+      "email": "neha.p@techflow.net",
+      "product": "Enterprise Plan",
+      "category": "Enterprise",
+      "amount": 999,
+      "status": "Completed"
+    },
+    {
+      "id": "TX-1007",
+      "date": "2026-09-25",
+      "customer": "Vikram Das",
+      "email": "vikram.d@dasmedia.in",
+      "product": "Starter Plan",
+      "category": "Subscription",
+      "amount": 99,
+      "status": "Refunded"
+    },
+    {
+      "id": "TX-1008",
+      "date": "2026-09-24",
+      "customer": "Simran Roy",
+      "email": "simran.roy@cloudsync.io",
+      "product": "Business Plan",
+      "category": "Subscription",
+      "amount": 499,
+      "status": "Completed"
+    },
+    {
+      "id": "TX-1009",
+      "date": "2026-09-23",
+      "customer": "Kavita Rao",
+      "email": "kavita.r@raoanalytics.com",
+      "product": "Pro Plan",
+      "category": "Subscription",
+      "amount": 249,
+      "status": "Pending"
+    },
+    {
+      "id": "TX-1010",
+      "date": "2026-09-21",
+      "customer": "Arjun Mehta",
+      "email": "arjun.m@mehtalabs.org",
+      "product": "Enterprise Plan",
+      "category": "Enterprise",
+      "amount": 999,
+      "status": "Completed"
+    },
+    {
+      "id": "TX-1011",
+      "date": "2026-09-20",
+      "customer": "Meera Joshi",
+      "email": "meera.j@joshiart.com",
+      "product": "Starter Plan",
+      "category": "Subscription",
+      "amount": 99,
+      "status": "Completed"
+    },
+    {
+      "id": "TX-1012",
+      "date": "2026-09-18",
+      "customer": "Devendra Nair",
+      "email": "dev.nair@nairtech.dev",
+      "product": "Pro Plan",
+      "category": "Subscription",
+      "amount": 249,
+      "status": "Refunded"
+    }
+  ]
+}

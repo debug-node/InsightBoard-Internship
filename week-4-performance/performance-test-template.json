@@ -1,0 +1,15 @@
+{
+  "project": "InsightBoard",
+  "week": 4,
+  "optimization_techniques": [
+    "Deferred JavaScript execution",
+    "Resource hint and stylesheet preload",
+    "No external UI framework or unnecessary runtime dependencies",
+    "Reduced duplicated CSS through reusable classes",
+    "Lightweight inline SVG chart instead of a heavy chart library",
+    "Responsive CSS media queries",
+    "Reduced-motion support",
+    "Visibility-aware JavaScript behavior"
+  ],
+  "measurement_note": "Run Chrome Lighthouse or PageSpeed Insights on the deployed Week 3 version, record the baseline, then run the Week 4 version and record the final score. Use actual measured values in the final report."
+}

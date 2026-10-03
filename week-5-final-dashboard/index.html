@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="InsightBoard - Modern interactive SaaS analytics dashboard with dynamic JSON data loading, sorting, filtering, and responsive charts.">
+  <meta name="theme-color" content="#635bff">
+  <title>InsightBoard | Analytics Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body id="top">
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <nav class="navbar container" aria-label="Primary navigation">
+      <a class="logo" href="#top" aria-label="InsightBoard home">
+        <span class="logo-mark" aria-hidden="true">I</span>
+        <span class="logo-text">InsightBoard</span>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="navMenu"
+        aria-label="Open navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav-links" id="navMenu">
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#analytics">Analytics</a></li>
+        <li><a href="#transactions">Transactions</a></li>
+        <li><a href="#faq">Architecture FAQ</a></li>
+        <li><button class="nav-button" id="helpBtn" type="button" aria-haspopup="dialog">Help & Guide</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section class="hero" id="overview">
+      <div class="container hero-inner">
+        <div class="hero-content">
+          <p class="eyebrow">INSIGHTBOARD ANALYTICS</p>
+          <h1>Make your data <span>work for you.</span></h1>
+          <p class="hero-copy">
+            A responsive frontend analytics web application that fetches data dynamically from JSON,
+            enabling real-time KPI inspection, trend exploration, and structured transaction filtering.
+          </p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#analytics">Explore Analytics</a>
+            <button class="btn secondary" id="quickView" type="button" aria-haspopup="dialog">Executive Summary</button>
+          </div>
+        </div>
+
+        <div class="hero-summary" aria-label="Executive performance card">
+          <div class="hero-summary-header">
+            <span>YTD Performance</span>
+            <span class="badge badge-live" id="heroLiveBadge">● Live Data</span>
+          </div>
+          <strong id="heroRevenue">$0</strong>
+          <div class="hero-summary-meta">
+            <small id="heroGrowth" class="positive">Loading...</small>
+            <span id="heroCustomers" class="hero-subtext">Active customers: --</span>
+          </div>
+          <div class="mini-bars" id="miniBars" aria-label="Monthly trend preview" role="img"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="analytics">
+      <div class="container">
+        <div class="section-title">
+          <div>
+            <p class="eyebrow">LIVE DASHBOARD</p>
+            <h2>Business overview</h2>
+            <p>Data is loaded asynchronously from <code>data.json</code> with zero hardcoded values.</p>
+          </div>
+          <div class="section-actions">
+            <span class="last-updated-text" id="lastUpdatedWrap">
+              Updated: <time id="lastUpdated">Loading...</time>
+            </span>
+            <button class="btn primary" id="refreshBtn" type="button" aria-label="Refresh dashboard data">
+              <span class="refresh-icon" aria-hidden="true">↻</span> Refresh data
+            </button>
+          </div>
+        </div>
+
+        <div class="alert-banner alert-error" id="errorBanner" role="alert" hidden>
+          <div class="alert-content">
+            <strong>Unable to load dashboard data.</strong>
+            <p id="errorMessage">Please make sure you are running the project through VS Code Live Server and try again.
+            </p>
+          </div>
+          <button class="btn btn-sm btn-error" id="retryBtn" type="button">Retry</button>
+        </div>
+
+        <div class="loading-state" id="loadingIndicator" role="status" aria-live="polite">
+          <div class="spinner" aria-hidden="true"></div>
+          <span>Loading dashboard data...</span>
+        </div>
+
+        <div class="metrics-grid" id="metrics" aria-live="polite" aria-label="Key Performance Indicators"></div>
+
+        <div class="analytics-tabs-wrapper">
+          <div class="tabs-nav" role="tablist" aria-label="Analytics visualizations">
+            <button class="tab-btn active" id="tabBtnRevenue" type="button" role="tab" aria-selected="true"
+              aria-controls="panelRevenue">
+              Revenue & Target Trend
+            </button>
+            <button class="tab-btn" id="tabBtnProducts" type="button" role="tab" aria-selected="false"
+              aria-controls="panelProducts">
+              Product Performance
+            </button>
+            <button class="tab-btn" id="tabBtnChannels" type="button" role="tab" aria-selected="false"
+              aria-controls="panelChannels">
+              Acquisition Channels
+            </button>
+          </div>
+
+          <article class="panel tab-panel" id="panelRevenue" role="tabpanel" aria-labelledby="tabBtnRevenue">
+            <div class="panel-head">
+              <div>
+                <h3>Monthly Revenue & Growth</h3>
+                <p>Compare monthly earnings against performance targets</p>
+              </div>
+              <div class="panel-controls">
+                <label for="periodFilter" class="sr-only">Select revenue period</label>
+                <select id="periodFilter" aria-label="Revenue period filter">
+                  <option value="all">All 12 Months</option>
+                  <option value="first">H1: Jan – Jun</option>
+                  <option value="second">H2: Jul – Dec</option>
+                  <option value="q1">Q1: Jan – Mar</option>
+                  <option value="q2">Q2: Apr – Jun</option>
+                  <option value="q3">Q3: Jul – Sep</option>
+                  <option value="q4">Q4: Oct – Dec</option>
+                </select>
+                <div class="chart-legend" aria-hidden="true">
+                  <span class="legend-item"><i class="legend-box actual"></i> Actual</span>
+                  <span class="legend-item"><i class="legend-box target"></i> Target</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="chart-container">
+              <div class="chart" id="chart" role="region" aria-label="Monthly revenue bar chart" tabindex="0"></div>
+            </div>
+
+            <div class="chart-summary-bar" id="chartSummary"></div>
+          </article>
+
+          <article class="panel tab-panel hidden" id="panelProducts" role="tabpanel" aria-labelledby="tabBtnProducts">
+            <div class="panel-head">
+              <div>
+                <h3>Subscription Products</h3>
+                <p>Volume and recurring revenue by tier</p>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table class="products-table">
+                <caption class="sr-only">Subscription products overview</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Product Tier</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Price / Mo</th>
+                    <th scope="col">Active Subscribers</th>
+                    <th scope="col">Monthly Revenue</th>
+                    <th scope="col">Status</th>
+                  </tr>
+                </thead>
+                <tbody id="productsBody"></tbody>
+              </table>
+            </div>
+          </article>
+
+          <article class="panel tab-panel hidden" id="panelChannels" role="tabpanel" aria-labelledby="tabBtnChannels">
+            <div class="panel-head">
+              <div>
+                <h3>Traffic Acquisition</h3>
+                <p>Visitor distribution and conversion rates by channel</p>
+              </div>
+            </div>
+            <div class="channels-grid" id="channels"></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section light" id="transactions">
+      <div class="container">
+        <div class="section-title">
+          <div>
+            <p class="eyebrow">TRANSACTION DATA</p>
+            <h2>Recent transactions</h2>
+            <p>Filter by status, search by customer/product, and sort columns dynamically.</p>
+          </div>
+          <div class="filter-toolbar">
+            <div class="search-box">
+              <label for="search" class="sr-only">Search transactions by customer or product</label>
+              <input class="search-input" id="search" type="search" placeholder="Search customer, product or ID..."
+                aria-label="Search transactions">
+            </div>
+            <div class="status-filter-box">
+              <label for="statusFilter" class="sr-only">Filter by transaction status</label>
+              <select id="statusFilter" aria-label="Filter by transaction status">
+                <option value="all">All Statuses</option>
+                <option value="Completed">Completed</option>
+                <option value="Pending">Pending</option>
+                <option value="Refunded">Refunded</option>
+              </select>
+            </div>
+            <button class="btn secondary btn-reset" id="resetFiltersBtn" type="button"
+              title="Reset search and filters">Reset</button>
+          </div>
+        </div>
+
+        <article class="panel table-panel">
+          <div class="table-wrap">
+            <table class="data-table">
+              <caption class="sr-only">Recent business transactions list</caption>
+              <thead>
+                <tr>
+                  <th scope="col" aria-sort="none">
+                    <button class="sort-btn" data-sort="date" type="button">
+                      Date <span class="sort-indicator" aria-hidden="true">↕</span>
+                    </button>
+                  </th>
+                  <th scope="col" aria-sort="none">
+                    <button class="sort-btn" data-sort="id" type="button">
+                      ID <span class="sort-indicator" aria-hidden="true">↕</span>
+                    </button>
+                  </th>
+                  <th scope="col" aria-sort="ascending">
+                    <button class="sort-btn" data-sort="customer" type="button">
+                      Customer <span class="sort-indicator" aria-hidden="true">▲</span>
+                    </button>
+                  </th>
+                  <th scope="col" aria-sort="none">
+                    <button class="sort-btn" data-sort="product" type="button">
+                      Product <span class="sort-indicator" aria-hidden="true">↕</span>
+                    </button>
+                  </th>
+                  <th scope="col" aria-sort="none">
+                    <button class="sort-btn" data-sort="amount" type="button">
+                      Amount <span class="sort-indicator" aria-hidden="true">↕</span>
+                    </button>
+                  </th>
+                  <th scope="col" aria-sort="none">
+                    <button class="sort-btn" data-sort="status" type="button">
+                      Status <span class="sort-indicator" aria-hidden="true">↕</span>
+                    </button>
+                  </th>
+                  <th scope="col">
+                    <span>Action</span>
+                  </th>
+                </tr>
+              </thead>
+              <tbody id="transactionsBody"></tbody>
+            </table>
+          </div>
+
+          <div class="empty-state" id="emptyState" hidden>
+            <div class="empty-icon" aria-hidden="true">🔍</div>
+            <h3>No matching transactions found</h3>
+            <p>No transactions match your current search and filter selections.</p>
+            <button class="btn secondary" id="clearFilterBtn" type="button">Clear Filters</button>
+          </div>
+
+          <div class="table-footer">
+            <p id="tableStatus" class="status-text" role="status" aria-live="polite">Showing transactions...</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="section-title">
+          <div>
+            <p class="eyebrow">ENGINEERING PRACTICES</p>
+            <h2>Architecture & Internship FAQ</h2>
+            <p>How this 5-week project implements clean frontend engineering, accessibility, and dynamic JSON data.</p>
+          </div>
+        </div>
+
+        <div class="accordion-card">
+          <div class="accordion-item">
+            <button class="accordion-trigger" type="button" aria-expanded="false" aria-controls="faq1" id="faqBtn1">
+              <span>How does dynamic JSON data loading work?</span>
+              <span class="accordion-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="accordion-panel" id="faq1" role="region" aria-labelledby="faqBtn1" hidden>
+              <p>
+                The application calls the browser <code>fetch('data.json')</code> API with cache controls.
+                Upon receiving the JSON response, the dashboard parses KPI metrics, monthly revenue records,
+                channel traffic percentages, product catalogs, and transactions. Every component in the UI renders
+                from this state object. If <code>data.json</code> is modified, clicking "↻ Refresh data" instantly
+                re-renders the UI.
+              </p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-trigger" type="button" aria-expanded="false" aria-controls="faq2" id="faqBtn2">
+              <span>How do multi-criteria search, filtering, and sorting interact?</span>
+              <span class="accordion-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="accordion-panel" id="faq2" role="region" aria-labelledby="faqBtn2" hidden>
+              <p>
+                Filtering and sorting are purely functional and state-driven. The <code>state</code> object preserves
+                active search query, status filter, sort column, and ascending/descending order.
+                When any filter changes, the pipeline filters the transaction array, sorts by data type
+                (numerical for amounts, chronological for ISO dates, alphabetical for text), updates table rows,
+                and announces the row count via ARIA live regions.
+              </p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-trigger" type="button" aria-expanded="false" aria-controls="faq3" id="faqBtn3">
+              <span>What accessibility standards are implemented?</span>
+              <span class="accordion-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="accordion-panel" id="faq3" role="region" aria-labelledby="faqBtn3" hidden>
+              <p>
+                InsightBoard adheres to WCAG 2.1 AA standards: semantic landmarks (<code>main</code>, <code>nav</code>,
+                <code>header</code>, <code>footer</code>, <code>section</code>, <code>article</code>),
+                a top-level Skip Link, proper table semantics with <code>th scope="col"</code> and
+                <code>aria-sort</code>,
+                complete keyboard navigation with visible focus rings (<code>:focus-visible</code>), focus trapping
+                inside modal dialogs,
+                Escape key dismissal, and <code>prefers-reduced-motion</code> media query support.
+              </p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-trigger" type="button" aria-expanded="false" aria-controls="faq4" id="faqBtn4">
+              <span>How is frontend performance optimized?</span>
+              <span class="accordion-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="accordion-panel" id="faq4" role="region" aria-labelledby="faqBtn4" hidden>
+              <p>
+                The project requires zero runtime libraries or heavy chart packages.
+                Scripts are deferred, DOM queries are cached, search inputs are debounced,
+                event delegation is used on interactive tables, and charts are rendered with lightweight CSS/DOM flex
+                elements.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal" id="helpModal" role="dialog" aria-modal="true" aria-labelledby="helpModalTitle"
+    aria-describedby="helpModalDesc" hidden>
+    <div class="modal-backdrop" data-close="true"></div>
+    <div class="modal-dialog">
+      <button class="modal-close" id="closeHelpModal" type="button" aria-label="Close dialog">×</button>
+      <p class="eyebrow">INSIGHTBOARD OVERVIEW</p>
+      <h2 id="helpModalTitle">Dashboard Summary & Guide</h2>
+      <div id="helpModalDesc" class="modal-body">
+        <p>Welcome to the InsightBoard internship mini web application. This project demonstrates mastery across the
+          5-week curriculum:</p>
+        <ul class="modal-features-list">
+          <li><strong>Week 1:</strong> Responsive semantic layout, Flexbox, and CSS Grid</li>
+          <li><strong>Week 2:</strong> Interactive vanilla JS components: tabs, accordion, and modal</li>
+          <li><strong>Week 3:</strong> WCAG accessibility, focus trapping, landmarks, and ARIA live regions</li>
+          <li><strong>Week 4:</strong> Performance optimizations, deferred JS, and zero dependencies</li>
+          <li><strong>Week 5:</strong> Dynamic JSON integration, live sorting, multi-attribute filtering, and error
+            states</li>
+        </ul>
+        <div class="modal-tips">
+          <h4>Keyboard Shortcuts:</h4>
+          <p><kbd>Tab</kbd> / <kbd>Shift + Tab</kbd> Navigate controls &bull; <kbd>Esc</kbd> Close open dialog &bull;
+            <kbd>Enter</kbd> Select action
+          </p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn primary" id="helpDoneBtn" type="button">Understood</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="detailModal" role="dialog" aria-modal="true" aria-labelledby="detailModalTitle" hidden>
+    <div class="modal-backdrop" data-close="true"></div>
+    <div class="modal-dialog">
+      <button class="modal-close" id="closeDetailModal" type="button" aria-label="Close transaction details">×</button>
+      <p class="eyebrow">TRANSACTION INSPECTOR</p>
+      <h2 id="detailModalTitle">Transaction Details</h2>
+      <div class="modal-body" id="detailModalContent"></div>
+      <div class="modal-footer">
+        <button class="btn secondary" id="detailDoneBtn" type="button">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-meta">
+        <span>© 2026 InsightBoard. Final Internship Web Application.</span>
+        <span class="system-status">● Environment: Client-Side JSON Architecture</span>
+      </div>
+      <a class="back-to-top" href="#top" aria-label="Back to top of page">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+
+</html>
