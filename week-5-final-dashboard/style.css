@@ -74,6 +74,7 @@ textarea {
   margin-inline: auto;
 }
 
+/* Accessible skip link positioned off-screen until focused */
 .skip-link {
   position: fixed;
   top: -100px;
@@ -1142,6 +1143,7 @@ th[aria-sort="descending"] .sort-indicator {
   color: var(--primary);
 }
 
+/* Modal dialog overlay and content */
 .modal {
   position: fixed;
   inset: 0;
@@ -1389,6 +1391,7 @@ body.modal-open {
   color: var(--primary-subtle);
 }
 
+/* Responsive layout breakpoints */
 @media (max-width: 1024px) {
   .hero-inner {
     grid-template-columns: 1fr;
@@ -1483,6 +1486,7 @@ body.modal-open {
   }
 }
 
+/* Disable animations when user prefers reduced motion */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

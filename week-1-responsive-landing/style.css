@@ -397,6 +397,7 @@ h1 span {
   color: white;
 }
 
+/* Responsive layout and mobile navigation */
 @media (max-width: 850px) {
   .menu-toggle {
     display: block;

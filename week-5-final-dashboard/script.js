@@ -84,6 +84,7 @@ function debounce(fn, wait) {
   };
 }
 
+// Fetch dashboard metrics and monthly data from data.json
 async function loadData() {
   state.isLoading = true;
   showLoading(true);
@@ -145,6 +146,7 @@ function hideError() {
   }
 }
 
+// Render all dashboard sections with latest state
 function renderDashboard(data) {
   renderHero(data);
   renderMetrics(data.metrics);
@@ -154,6 +156,7 @@ function renderDashboard(data) {
   renderTable();
 }
 
+// Render top summary banner and mini trend bars
 function renderHero(data) {
   if (!data) return;
 
@@ -187,6 +190,7 @@ function renderHero(data) {
   }
 }
 
+// Render KPI metric cards with change badges
 function renderMetrics(metrics) {
   if (!DOM.metrics || !Array.isArray(metrics)) return;
 
@@ -215,6 +219,7 @@ function renderMetrics(metrics) {
     .join("");
 }
 
+// Render monthly revenue bar chart based on selected period
 function renderChart() {
   if (!DOM.chart || !state.data || !Array.isArray(state.data.monthlyRevenue)) return;
 
@@ -288,6 +293,7 @@ function renderChart() {
   }
 }
 
+// Render top products performance table
 function renderProducts(products) {
   if (!DOM.productsBody || !Array.isArray(products)) return;
 
@@ -305,6 +311,7 @@ function renderProducts(products) {
     .join("");
 }
 
+// Render acquisition channel breakdown
 function renderChannels(channels) {
   if (!DOM.channels || !Array.isArray(channels)) return;
 
@@ -327,6 +334,7 @@ function renderChannels(channels) {
     .join("");
 }
 
+// Filter, sort, and render transaction table rows
 function renderTable() {
   if (!DOM.transactionsBody || !state.data || !Array.isArray(state.data.transactions)) return;
 
@@ -421,6 +429,7 @@ function renderTable() {
   }
 }
 
+// Open modal dialog and trap focus
 function openModal(modalEl, triggerBtn) {
   if (!modalEl) return;
   activeModalTrigger = triggerBtn || document.activeElement;
@@ -436,6 +445,7 @@ function openModal(modalEl, triggerBtn) {
   }
 }
 
+// Close modal dialog and restore trigger focus
 function closeModal(modalEl) {
   if (!modalEl) return;
   modalEl.hidden = true;
@@ -446,6 +456,7 @@ function closeModal(modalEl) {
   }
 }
 
+// Populate and open transaction detail inspector
 function showTransactionDetail(id) {
   if (!state.data || !Array.isArray(state.data.transactions)) return;
   const item = state.data.transactions.find(tx => tx.id === id);
@@ -533,6 +544,7 @@ function showTransactionDetail(id) {
 
   openModal(DOM.detailModal);
 }
+// Trap keyboard focus and handle Escape key inside active modal
 document.addEventListener("keydown", event => {
   const activeModal = [DOM.helpModal, DOM.detailModal].find(m => m && !m.hidden);
   if (!activeModal) return;
@@ -561,6 +573,7 @@ document.addEventListener("keydown", event => {
   }
 });
 
+// Initialize dashboard event listeners
 function initEventListeners() {
   if (DOM.menuToggle && DOM.navMenu) {
     DOM.menuToggle.addEventListener("click", () => {
@@ -604,6 +617,7 @@ function initEventListeners() {
   });
 
   if (DOM.search) {
+    // Debounce search input to avoid excessive re-renders
     DOM.search.addEventListener(
       "input",
       debounce(e => {
@@ -631,6 +645,7 @@ function initEventListeners() {
   if (DOM.resetFiltersBtn) DOM.resetFiltersBtn.addEventListener("click", resetHandler);
   if (DOM.clearFilterBtn) DOM.clearFilterBtn.addEventListener("click", resetHandler);
 
+  // Toggle column sorting order
   DOM.sortButtons.forEach(btn => {
     btn.addEventListener("click", () => {
       const col = btn.dataset.sort;
@@ -681,6 +696,7 @@ function initEventListeners() {
     });
   });
 
+  // Toggle accordion panel expand/collapse
   DOM.accordionTriggers.forEach(trigger => {
     trigger.addEventListener("click", () => {
       const panel = document.getElementById(trigger.getAttribute("aria-controls"));
@@ -692,6 +708,7 @@ function initEventListeners() {
       if (panel) panel.hidden = isExpanded;
     });
   });
+  // Smooth scroll with fixed header offset
   document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener("click", e => {
       const targetHref = link.getAttribute("href");

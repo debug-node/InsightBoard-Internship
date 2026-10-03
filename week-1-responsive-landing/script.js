@@ -1,6 +1,7 @@
 const menuToggle = document.getElementById("menuToggle");
 const primaryMenu = document.getElementById("primaryMenu");
 
+// Toggle mobile navigation
 menuToggle.addEventListener("click", () => {
   const isOpen = primaryMenu.classList.toggle("open");
   menuToggle.setAttribute("aria-expanded", String(isOpen));
@@ -10,6 +11,7 @@ menuToggle.addEventListener("click", () => {
   );
 });
 
+// Close mobile menu when a nav link is selected
 document.querySelectorAll("#primaryMenu a").forEach((link) => {
   link.addEventListener("click", () => {
     primaryMenu.classList.remove("open");
@@ -17,6 +19,8 @@ document.querySelectorAll("#primaryMenu a").forEach((link) => {
     menuToggle.setAttribute("aria-label", "Open navigation menu");
   });
 });
+
+// Smooth scroll with fixed header offset
 document.querySelectorAll('a[href^="#"]').forEach((link) => {
   link.addEventListener("click", (e) => {
     const targetHref = link.getAttribute("href");

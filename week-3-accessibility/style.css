@@ -627,6 +627,7 @@ body.modal-open {
   }
 }
 
+/* Accessible skip link positioned off-screen until focused */
 .skip-link {
   position: fixed;
   top: -100px;
@@ -643,6 +644,7 @@ body.modal-open {
   top: 0;
 }
 
+/* Visible focus indicator for keyboard navigation */
 :focus-visible {
   outline: 3px solid #8b85ff;
   outline-offset: 3px;

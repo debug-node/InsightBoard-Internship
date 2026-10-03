@@ -1,6 +1,7 @@
 const menuToggle = document.getElementById("menuToggle");
 const primaryMenu = document.getElementById("primaryMenu");
 
+// Toggle mobile navigation
 menuToggle.addEventListener("click", () => {
   const isOpen = primaryMenu.classList.toggle("open");
   menuToggle.setAttribute("aria-expanded", String(isOpen));
@@ -10,6 +11,7 @@ menuToggle.addEventListener("click", () => {
   );
 });
 
+// Close mobile menu when a nav link is selected
 document.querySelectorAll("#primaryMenu a").forEach((link) => {
   link.addEventListener("click", () => {
     primaryMenu.classList.remove("open");
@@ -21,6 +23,7 @@ document.querySelectorAll("#primaryMenu a").forEach((link) => {
 const tabs = document.querySelectorAll(".tab");
 const panels = document.querySelectorAll(".tab-panel");
 
+// Tab switching with keyboard arrow navigation
 tabs.forEach((tab, index) => {
   tab.addEventListener("click", () => {
     tabs.forEach(t => {
@@ -46,6 +49,7 @@ tabs.forEach((tab, index) => {
   });
 });
 
+// Toggle accordion panel expand/collapse
 document.querySelectorAll(".accordion-trigger").forEach(trigger => {
   trigger.addEventListener("click", () => {
     const panel = document.getElementById(trigger.getAttribute("aria-controls"));
@@ -56,6 +60,7 @@ document.querySelectorAll(".accordion-trigger").forEach(trigger => {
   });
 });
 
+// Modal dialog open/close controls
 const modal = document.getElementById("demoModal");
 const openModal = document.getElementById("openModal");
 const closeModal = document.getElementById("closeModal");
@@ -79,6 +84,7 @@ closeModal.addEventListener("click", hideModal);
 modalDone.addEventListener("click", hideModal);
 modalBackdrop.addEventListener("click", hideModal);
 
+// Trap keyboard focus and handle Escape key inside modal
 document.addEventListener("keydown", event => {
   if (event.key === "Escape" && !modal.hidden) {
     hideModal();
@@ -101,6 +107,7 @@ document.addEventListener("keydown", event => {
 
 const statusMessage = document.getElementById("statusMessage");
 
+// Announce dynamic UI updates to assistive technology via live region
 function announce(message) {
   if (statusMessage) {
     statusMessage.textContent = "";
@@ -127,11 +134,13 @@ openModal.addEventListener("click", () => announce("Interactive dialog opened.")
 closeModal.addEventListener("click", () => announce("Interactive dialog closed."));
 modalDone.addEventListener("click", () => announce("Interactive dialog closed."));
 
+// Respect system reduced-motion preference
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 if (reduceMotion) {
   document.documentElement.classList.add("reduce-motion");
 }
 
+// Smooth scroll with fixed header offset
 document.querySelectorAll('a[href^="#"]').forEach((link) => {
   link.addEventListener("click", (e) => {
     const targetHref = link.getAttribute("href");

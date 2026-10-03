@@ -1,6 +1,7 @@
 const menuToggle = document.getElementById("menuToggle");
 const primaryMenu = document.getElementById("primaryMenu");
 
+// Toggle mobile navigation
 menuToggle.addEventListener("click", () => {
   const isOpen = primaryMenu.classList.toggle("open");
   menuToggle.setAttribute("aria-expanded", String(isOpen));
@@ -10,6 +11,7 @@ menuToggle.addEventListener("click", () => {
   );
 });
 
+// Close mobile menu when a nav link is selected
 document.querySelectorAll("#primaryMenu a").forEach((link) => {
   link.addEventListener("click", () => {
     primaryMenu.classList.remove("open");
@@ -17,6 +19,7 @@ document.querySelectorAll("#primaryMenu a").forEach((link) => {
     menuToggle.setAttribute("aria-label", "Open navigation menu");
   });
 });
+// Tab switching with keyboard arrow navigation
 const tabs = document.querySelectorAll(".tab");
 const panels = document.querySelectorAll(".tab-panel");
 
@@ -44,6 +47,7 @@ tabs.forEach((tab, index) => {
     }
   });
 });
+// Toggle accordion panel expand/collapse
 document.querySelectorAll(".accordion-trigger").forEach(trigger => {
   trigger.addEventListener("click", () => {
     const panel = document.getElementById(trigger.getAttribute("aria-controls"));
@@ -53,6 +57,7 @@ document.querySelectorAll(".accordion-trigger").forEach(trigger => {
     panel.hidden = expanded;
   });
 });
+// Modal dialog open/close controls
 const modal = document.getElementById("demoModal");
 const openModal = document.getElementById("openModal");
 const closeModal = document.getElementById("closeModal");
@@ -76,6 +81,7 @@ closeModal.addEventListener("click", hideModal);
 modalDone.addEventListener("click", hideModal);
 modalBackdrop.addEventListener("click", hideModal);
 
+// Trap keyboard focus and handle Escape key inside modal
 document.addEventListener("keydown", event => {
   if (event.key === "Escape" && !modal.hidden) {
     hideModal();
@@ -95,6 +101,7 @@ document.addEventListener("keydown", event => {
     }
   }
 });
+// Smooth scroll with fixed header offset
 document.querySelectorAll('a[href^="#"]').forEach((link) => {
   link.addEventListener("click", (e) => {
     const targetHref = link.getAttribute("href");

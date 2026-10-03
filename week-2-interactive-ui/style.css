@@ -482,6 +482,7 @@ h1 span {
   background: #f7f9fc;
 }
 
+/* Tabs and accordion interactive components */
 .tabs-card,
 .accordion {
   background: #fff;
@@ -564,6 +565,7 @@ h1 span {
   margin-top: 10px;
 }
 
+/* Modal dialog overlay and content */
 .modal[hidden] {
   display: none;
 }
